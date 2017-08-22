@@ -25,7 +25,7 @@ var languageStrings = {
             "SKILL_NAME": "My History Facts",  // OPTIONAL change this to a more descriptive name
             "GET_FACT_MESSAGE": GET_FACT_MSG_EN,
             "HELP_MESSAGE": "You can say tell me a fact, or, what happened in 1900, or, you can say exit... What can I help you with?",
-            "HELP_REPROMPT": "Please say that again?",
+            "HELP_REPROMPT": "Sorry I don't get you. You can ask for a fact by saying give me a fact",
             "STOP_MESSAGE": "Goodbye!"
         }
     }
@@ -71,7 +71,7 @@ var handlers = {
         var randomFact = randomPhrase(factArr);
 
         // Create speech output
-        var speechOutput = this.t("GET_FACT_MESSAGE")[Math.floor(Math.random() * factArr.length)] + randomFact;
+        var speechOutput = randomPhrase(this.t("GET_FACT_MESSAGE")) + randomFact;
         this.emit(':askWithCard', speechOutput, this.t("HELP_REPROMPT"), this.t("SKILL_NAME"), randomFact)
     },
     'GetNewYearFactIntent': function () {
